@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>中国象棋后台</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="{{ static_url('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('css/bootstrap-dialog.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('css/AdminLTE.min.css') }}" rel="stylesheet">
+    <link href="{{ static_url('css/skins/skin-blue.min.css') }}" rel="stylesheet">
+    {% block header %}{% end %}
+    <style>
+        body {
+            font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif
+        }
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, .lead, a, .a, label, option, input, span, select, button, textarea, div {
+            font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif
+        }
+    }
+    </style>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+      <header class="main-header">
+
+        <a href="/" class="logo">
+          <span class="logo-mini">后台</span>
+          <span class="logo-lg">象棋后台</span>
+        </a>
+
+        <nav class="navbar navbar-static-top" role="navigation">
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user"></i>
+                  <span class="hidden-xs">{{user}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="user-header">
+                    <img src="{{ static_url('img/male.png') }}" class="img-circle" alt="User Image">
+                    <p>
+                      {{user}}
+                      <small></small>
+                    </p>
+                  </li>
+                  <li class="user-footer">
+                    <div class="pull-right">
+                      <a href="/logout" class="btn btn-default btn-flat">退出</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <aside class="main-sidebar">
+
+        <section class="sidebar">
+
+          <ul class="sidebar-menu">
+            <li class="header">功能</li>
+              {% module Menu() %}
+          </ul>
+        </section>
+      </aside>
+
+      <div class="content-wrapper">
+        <section class="content-header">
+          <h1>
+            {% module Route("title") %}
+            <small>{% module Route("category") %}</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i> 首页</li>
+            <li>{% module Route("category") %}</li>
+            <li class="active">{% module Route("title") %}</li>
+          </ol>
+        </section>
+
+        <section class="content">
+        {% block content %}{% end %}
+        </section>
+      </div>
+
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          生活不只眼前的苟且，还有棋和远方
+        </div>
+        <strong>Copyright &copy; 2015 <a href="#">成都指微星网络科技</a></strong>
+      </footer>
+    </div>
+    <script src="{{ static_url('js/jquery.min.js') }}"></script>
+    <script src="{{ static_url('js/bootstrap.min.js') }}"></script>
+    <script src="{{ static_url('js/app.min.js') }}"></script>
+    <script src="{{ static_url('js/bootstrap-dialog.min.js') }}"></script>
+    <script src="{{ static_url('js/admin.js') }}"></script>
+    {% block footer %}{% end %}
+  </body>
+</html>

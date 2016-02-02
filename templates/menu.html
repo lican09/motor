@@ -1,0 +1,20 @@
+{% for menu in main_menu %}
+  {% if route["category"]==menu["name"] %}
+  <li class="treeview active">
+  {% else %}
+  <li class="treeview">
+  {% end %}
+    <a href="#"><i class="fa {{menu["icon"]}}"></i> <span>{{menu["name"]}}</span> <i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+    {% for tree in menu["tree"] %}
+      {% if route["title"]==tree["name"] %}
+      <li class="active">
+      {% else %}
+      <li>
+      {% end %}
+        <a href="{{tree["path"]}}"><i class="fa fa-circle-o"></i> <span>{{tree["name"]}}</span></a>
+      </li>
+    {% end %}
+    </ul>
+  </li>
+{% end %}
